@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate HTML Reference Guide</title>
+    <meta name="description"
+        content="A comprehensive reference guide for HTML tags, attributes, entities, and terminology.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --primary-light: #818CF8;
+            --bg: #0F172A;
+            --surface: #1E293B;
+            --surface-hover: #334155;
+            --text-main: #F8FAFC;
+            --text-muted: #94A3B8;
+            --code-bg: #0B1120;
+            --accent-1: #10B981;
+            --accent-2: #F59E0B;
+            --accent-3: #EC4899;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 4rem;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--surface), var(--bg));
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--surface-hover);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary-light), #C7D2FE);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: -1.5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        nav a {
+            background: var(--surface);
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 99px;
+            font-weight: 600;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--surface-hover);
+            transition: all 0.2s ease;
+        }
+
+        nav a:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        section {
+            margin-top: 4rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid var(--surface-hover);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+            border-color: var(--primary-light);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--surface-hover);
+            padding-bottom: 0.75rem;
+        }
+
+        .keyword {
+            font-family: monospace;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-1);
+            background: var(--code-bg);
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            margin-right: 1rem;
+        }
+
+        .attribute-name {
+            color: var(--accent-2);
+        }
+
+        .entity-name {
+            color: var(--accent-3);
+        }
+
+        .tag-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .section-label {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-top: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .code-block {
+            background: var(--code-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            color: #E2E8F0;
+            border: 1px solid #1E293B;
+            margin-bottom: 1rem;
+        }
+
+        .use-case {
+            color: #CBD5E1;
+            font-size: 0.95rem;
+            background: rgba(79, 70, 229, 0.1);
+            border-left: 3px solid var(--primary);
+            padding: 0.75rem 1rem;
+            border-radius: 0 8px 8px 0;
+            margin-top: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            background: var(--surface);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        th,
+        td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--surface-hover);
+        }
+
+        th {
+            background: rgba(255, 255, 255, 0.05);
+            font-weight: 600;
+            color: var(--primary-light);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .term-card {
+            background: var(--surface);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--primary);
+        }
+
+        .term-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Ultimate HTML Reference</h1>
+        <p>Your comprehensive guide to HTML tags, attributes, entities, and core concepts.</p>
+    </header>
+
+    <div class="container">
+        <nav>
+            <a href="#tags">Essential Tags</a>
+            <a href="#forms">Forms</a>
+            <a href="#tables">Tables</a>
+            <a href="#semantic">Semantic &amp; Layout</a>
+            <a href="#media">Media</a>
+            <a href="#attributes">Attributes</a>
+            <a href="#entities">Entities</a>
+            <a href="#concepts">Concepts</a>
+        </nav>
+
+        <!-- HTML TAGS SECTION -->
+        <section id="tags">
+            <h2>Essential Tags (Keywords)</h2>
+            <div class="grid">
+
+                <!-- Tag Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="keyword">&lt;html&gt;</span>
+                        <span class="tag-name">Root Element</span>
+                    </div>
+                    <div class="section-label">Syntax</div>
+                    <div class="code-block">&lt;html&gt;<br>&nbsp;&nbsp;...content...<br>&lt;/html&gt;</div>
+                    <div class="section-label">Example</div>
+                    <div class="code-block">&lt;html lang="en"&gt;<br>&lt;/html&gt;</div>
+                    <div class="use-case">
+                        <strong>Use Case:</strong> Serves as the container for all other HTML elements on the page
+                        (except the &lt;!DOCTYPE&gt;). It is the root of the document.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="keyword">&lt;head&gt;</span>
+                        <span class="tag-name">Metadata Container</span>
+                    </div>
+                    <div class="section-label">Syntax</div>
+                    <div class="code-block">&lt;head&gt;<br>&nbsp;&nbsp;...meta tags, title, links...<br>&lt;/head&gt;
+                    </div>
+                    <div class="section-label">Example</div>
+                    <div class="code-block">&lt;head&gt;<br>&nbsp;&nbsp;&lt;title&gt;My
+                        Page&lt;/title&gt;<br>&lt;/head&gt;</div>
+                    <div class="use-case">
+                        <strong>Use Case:</strong> Contains machine-readable information (metadata) about the document,
+                        like its title, scripts, and stylesheets. This content is NOT visible on the page itself.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="keyword">&lt;body&gt;</span>
+                        <span class="tag-name">Document Body</span>
+                    </div>
+                    <div class="section-label">Syntax</div>
+                    <div class="code-block">&lt;body&gt;<br>&nbsp;&nbsp;...visible content...<br>&lt;/body&gt;</div>
+                    <div class="section-label">Example</div>
+                    <div class="code-block">&lt;body&gt;<br>&nbsp;&nbsp;&lt;h1&gt;Hello
+                        World!&lt;/h1&gt;<br>&lt;/body&gt;</div>
+                    <div class="use-case">
+                        <strong>Use Case:</strong> Encloses all the content that you actually want to display in the web
+                        browser window (text, images, links, etc.).
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="keyword">&lt;h1&gt; - &lt;h6&gt;</span>
+                        <span class="tag-name">Headings</span>
+                    </div>
+                    <div class="section-label">Syntax</div>
+                    <div class="code-block">&lt;h1&gt;Heading Text&lt;/h1&gt;</div>
+                    <div class="section-label">Example</div>
+                    <div class="code-block">&lt;h1&gt;Main Title&lt;/h1&gt;<br>&lt;h2&gt;Subtitle&lt;/h2&gt;</div>
+                    <div class="use-case">
+                        <strong>Use Case:</strong> Used to define headings for sections of content. &lt;h1&gt; is the
+                        most important (main title), down to &lt;h6&gt; (least important). Great for SEO and structure.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="keyword">&lt;p&gt;</span>
+                        <span class="tag-name">Paragraph</span>
+                    </div>
+                    <div class="section-label">Syntax</div>
+                    <div class="code-block">&lt;p&gt;Text content goes here.&lt;/p&gt;</div>
+                    <div class="section-label">Example</div>
+                    <div class="code-block">&lt;p&gt;Welcome to my website.&lt;/p&gt;</div>
+                    <div class="use-case">
+                        <strong>Use Case:</strong> Defines a block of text. It automatically adds some space (margin)
+                        before and after the text.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="keyword">&lt;a&gt;</span>
+                        <span class="tag-name">Anchor (Link)</span>
+                    </div>
+                    <div class="section-label">Syntax</div>
+                    <div class="code-block">&lt;a href="URL"&gt;Link Text&lt;/a&gt;</div>
+                    <div class="section-label">Example</div>
+                    <div class="code-block">&lt;a href="https://google.com"&gt;Google&lt;/a&gt;</div>
+                    <div class="use-case">
+                        <strong>Use Case:</strong> Creates a hyperlink to another web page, file, email address, or
+                        location in the same page.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="keyword">&lt;img&gt;</span>
+                        <span class="tag-name">Image</span>
+                    </div>
+                    <div class="section-label">Syntax</div>
+                    <div class="code-block">&lt;img src="image.jpg" alt="Description"&gt;</div>
+                    <div class="section-label">Example</div>
+                    <div class="code-block">&lt;img src="logo.png" alt="Company Logo"&gt;</div>
+                    <div class="use-case">
+                        <strong>Use Case:</strong> Embeds an image into the webpage. It is a self-closing tag (does not
+                        need a closing tag).
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="keyword">&lt;div&gt;</span>
+                        <span class="tag-name">Division</span>
+                    </div>
+                    <div class="section-label">Syntax</div>
+                    <div class="code-block">&lt;div&gt;...content...&lt;/div&gt;</div>
+                    <div class="section-label">Example</div>
+                    <div class="code-block">&lt;div class="container"&gt;<br>&nbsp;&nbsp;&lt;p&gt;Grouped
+                        text&lt;/p&gt;<br>&lt;/div&gt;</div>
+                    <div class="use-case">
+                        <strong>Use Case:</strong> A generic block-level container used to group other elements
+                        together, usually for styling purposes with CSS or targeting with JavaScript.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="keyword">&lt;span&gt;</span>
+                        <span class="tag-name">Inline Container</span>
+                    </div>
+                    <div class="section-label">Syntax</div>
+                    <div class="code-block">&lt;span&gt;...content...&lt;/span&gt;</div>
+                    <div class="section-label">Example</div>
+                    <div class="code-block">&lt;p&gt;I am &lt;span style="color:red"&gt;red&lt;/span&gt;.&lt;/p&gt;
+                    </div>
+                    <div class="use-case">
+                        <strong>Use Case:</strong> A generic inline container used to style a small portion of text
+                        within a larger block, without breaking onto a new line.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="keyword">&lt;ul&gt; &amp; &lt;li&gt;</span>
+                        <span class="tag-name">Unordered List</span>
+                    </div>
+                    <div class="section-label">Syntax</div>
+                    <div class="code-block">&lt;ul&gt;<br>&nbsp;&nbsp;&lt;li&gt;Item&lt;/li&gt;<br>&lt;/ul&gt;</div>
+                    <div class="section-label">Example</div>
+                    <div class="code-block">
+                        &lt;ul&gt;<br>&nbsp;&nbsp;&lt;li&gt;Apple&lt;/li&gt;<br>&nbsp;&nbsp;&lt;li&gt;Banana&lt;/li&gt;<br>&lt;/ul&gt;
+                    </div>
+                    <div class="use-case">
+                        <strong>Use Case:</strong> Used to create bulleted lists where the order of items does not
+                        matter.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FORMS SECTION -->
+        <section id="forms">
+            <h2>Form Tags</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="keyword">&lt;form&gt;</span>
+                        <span class="tag-name">Form Container</span>
+                    </div>
+                    <div class="section-label">Syntax</div>
+                    <div class="code-block">&lt;form action="/submit"
+                        method="POST"&gt;<br>&nbsp;&nbsp;...inputs...<br>&lt;/form&gt;</div>
+                    <div class="section-label">Example</div>
+                    <div class="code-block">&lt;form&gt;<br>&nbsp;&nbsp;&lt;input type="text"&gt;<br>&lt;/form&gt;</div>
+                    <div class="use-case">
+                        <strong>Use Case:</strong> Wraps input elements to submit user data to a server.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="keyword">&lt;input&gt;</span>
+                        <span class="tag-name">Input Field</span>
+                    </div>
+                    <div class="section-label">Syntax</div>
+                    <div class="code-block">&lt;input type="type" name="name"&gt;</div>
+                    <div class="section-label">Example</div>
+                    <div class="code-block">&lt;input type="email" placeholder="Email"&gt;<br>&lt;input
+                        type="checkbox"&gt;</div>
+                    <div class="use-case">
+                        <strong>Use Case:</strong> A versatile field for user input (text, checkbox, radio, password,
+                        etc.).
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="keyword">&lt;button&gt;</span>
+                        <span class="tag-name">Button</span>
+                    </div>
+                    <div class="section-label">Syntax</div>
+                    <div class="code-block">&lt;button type="button"&gt;Text&lt;/button&gt;</div>
+                    <div class="section-label">Example</div>
+                    <div class="code-block">&lt;button type="submit"&gt;Send&lt;/button&gt;</div>
+                    <div class="use-case">
+                        <strong>Use Case:</strong> A clickable button used to submit forms or trigger JavaScript
+                        actions.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="keyword">&lt;label&gt;</span>
+                        <span class="tag-name">Input Label</span>
+                    </div>
+                    <div class="section-label">Syntax</div>
+                    <div class="code-block">&lt;label for="id"&gt;Text&lt;/label&gt;</div>
+                    <div class="section-label">Example</div>
+                    <div class="code-block">&lt;label for="user"&gt;Username&lt;/label&gt;<br>&lt;input id="user"&gt;
+                    </div>
+                    <div class="use-case">
+                        <strong>Use Case:</strong> Provides a label for an input. Clicking the label focuses the input.
+                        Crucial for accessibility.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="keyword">&lt;textarea&gt;</span>
+                        <span class="tag-name">Multi-line Input</span>
+                    </div>
+                    <div class="section-label">Syntax</div>
+                    <div class="code-block">&lt;textarea rows="4"&gt;&lt;/textarea&gt;</div>
+                    <div class="section-label">Example</div>
+                    <div class="code-block">&lt;textarea placeholder="Message"&gt;&lt;/textarea&gt;</div>
+                    <div class="use-case">
+                        <strong>Use Case:</strong> Used when you need the user to input multiple lines of text, like a
+                        comment or message.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="keyword">&lt;select&gt; &amp; &lt;option&gt;</span>
+                        <span class="tag-name">Dropdown List</span>
+                    </div>
+                    <div class="section-label">Syntax</div>
+                    <div class="code-block">&lt;select&gt;<br>&nbsp;&nbsp;&lt;option
+                        value="v"&gt;Text&lt;/option&gt;<br>&lt;/select&gt;</div>
+                    <div class="section-label">Example</div>
+                    <div class="code-block">
+                        &lt;select&gt;<br>&nbsp;&nbsp;&lt;option&gt;Red&lt;/option&gt;<br>&nbsp;&nbsp;&lt;option&gt;Blue&lt;/option&gt;<br>&lt;/select&gt;
+                    </div>
+                    <div class="use-case">
+                        <strong>Use Case:</strong> Creates a dropdown menu for users to select one (or more) options.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TABLES SECTION -->
+        <section id="tables">
+            <h2>Table Tags</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="keyword">&lt;table&gt;</span>
+                        <span class="tag-name">Data Table</span>
+                    </div>
+                    <div class="section-label">Syntax</div>
+                    <div class="code-block">&lt;table&gt;...rows...&lt;/table&gt;</div>
+                    <div class="section-label">Example</div>
+                    <div class="code-block">&lt;table
+                        border="1"&gt;<br>&nbsp;&nbsp;&lt;tr&gt;&lt;td&gt;Data&lt;/td&gt;&lt;/tr&gt;<br>&lt;/table&gt;
+                    </div>
+                    <div class="use-case">
+                        <strong>Use Case:</strong> Defines a table to display tabular data (rows and columns). Do not
+                        use for page layout.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="keyword">&lt;tr&gt;, &lt;th&gt;, &lt;td&gt;</span>
+                        <span class="tag-name">Row, Header, Data</span>
+                    </div>
+                    <div class="section-label">Syntax</div>
+                    <div class="code-block">
+                        &lt;tr&gt;<br>&nbsp;&nbsp;&lt;th&gt;Header&lt;/th&gt;<br>&nbsp;&nbsp;&lt;td&gt;Cell&lt;/td&gt;<br>&lt;/tr&gt;
+                    </div>
+                    <div class="section-label">Example</div>
+                    <div class="code-block">&lt;tr&gt;<br>&nbsp;&nbsp;&lt;td&gt;Row 1, Cell 1&lt;/td&gt;<br>&lt;/tr&gt;
+                    </div>
+                    <div class="use-case">
+                        <strong>Use Case:</strong> `tr` creates a row. `th` creates a bold/centered header cell. `td`
+                        creates a standard data cell.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="keyword">&lt;thead&gt;, &lt;tbody&gt;</span>
+                        <span class="tag-name">Table Sections</span>
+                    </div>
+                    <div class="section-label">Syntax</div>
+                    <div class="code-block">&lt;thead&gt;...&lt;/thead&gt;<br>&lt;tbody&gt;...&lt;/tbody&gt;</div>
+                    <div class="section-label">Example</div>
+                    <div class="code-block">&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Title&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+                    </div>
+                    <div class="use-case">
+                        <strong>Use Case:</strong> Groups table content. `thead` for headers, `tbody` for main content,
+                        `tfoot` for summaries.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEMANTIC & LAYOUT SECTION -->
+        <section id="semantic">
+            <h2>Semantic &amp; Layout Tags</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="keyword">&lt;header&gt; &amp; &lt;footer&gt;</span>
+                        <span class="tag-name">Page Sections</span>
+                    </div>
+                    <div class="section-label">Syntax</div>
+                    <div class="code-block">&lt;header&gt;...&lt;/header&gt;<br>&lt;footer&gt;...&lt;/footer&gt;</div>
+                    <div class="section-label">Example</div>
+                    <div class="code-block">&lt;header&gt;&lt;h1&gt;Logo&lt;/h1&gt;&lt;/header&gt;</div>
+                    <div class="use-case">
+                        <strong>Use Case:</strong> `header` for introductory content/nav. `footer` for copyrights, links
+                        at the bottom.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="keyword">&lt;main&gt;</span>
+                        <span class="tag-name">Main Content</span>
+                    </div>
+                    <div class="section-label">Syntax</div>
+                    <div class="code-block">&lt;main&gt;...content...&lt;/main&gt;</div>
+                    <div class="section-label">Example</div>
+                    <div class="code-block">&lt;main&gt;<br>&nbsp;&nbsp;&lt;article&gt;Blog
+                        Post&lt;/article&gt;<br>&lt;/main&gt;</div>
+                    <div class="use-case">
+                        <strong>Use Case:</strong> Specifies the dominant content of the `body`. Should be unique per
+                        page.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="keyword">&lt;section&gt; &amp; &lt;article&gt;</span>
+                        <span class="tag-name">Content Blocks</span>
+                    </div>
+                    <div class="section-label">Syntax</div>
+                    <div class="code-block">&lt;section&gt;...&lt;/section&gt;<br>&lt;article&gt;...&lt;/article&gt;
+                    </div>
+                    <div class="section-label">Example</div>
+                    <div class="code-block">&lt;article&gt;<br>&nbsp;&nbsp;&lt;h2&gt;News&lt;/h2&gt;<br>&lt;/article&gt;
+                    </div>
+                    <div class="use-case">
+                        <strong>Use Case:</strong> `section` groups related thematic content. `article` is for
+                        independent, self-contained content (like a blog post).
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="keyword">&lt;nav&gt; &amp; &lt;aside&gt;</span>
+                        <span class="tag-name">Navigation &amp; Sidebar</span>
+                    </div>
+                    <div class="section-label">Syntax</div>
+                    <div class="code-block">&lt;nav&gt;...&lt;/nav&gt;<br>&lt;aside&gt;...&lt;/aside&gt;</div>
+                    <div class="section-label">Example</div>
+                    <div class="code-block">&lt;nav&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/nav&gt;</div>
+                    <div class="use-case">
+                        <strong>Use Case:</strong> `nav` for main navigation links. `aside` for content indirectly
+                        related to the main content (sidebars).
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MEDIA SECTION -->
+        <section id="media">
+            <h2>Media Tags</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="keyword">&lt;audio&gt; &amp; &lt;video&gt;</span>
+                        <span class="tag-name">Media Players</span>
+                    </div>
+                    <div class="section-label">Syntax</div>
+                    <div class="code-block">&lt;audio controls src="a.mp3"&gt;&lt;/audio&gt;<br>&lt;video
+                        src="v.mp4"&gt;&lt;/video&gt;</div>
+                    <div class="section-label">Example</div>
+                    <div class="code-block">&lt;video controls width="500"&gt;<br>&nbsp;&nbsp;&lt;source
+                        src="movie.mp4"&gt;<br>&lt;/video&gt;</div>
+                    <div class="use-case">
+                        <strong>Use Case:</strong> Embeds sound or video content directly into the webpage with native
+                        browser controls.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="keyword">&lt;iframe&gt;</span>
+                        <span class="tag-name">Inline Frame</span>
+                    </div>
+                    <div class="section-label">Syntax</div>
+                    <div class="code-block">&lt;iframe src="url"&gt;&lt;/iframe&gt;</div>
+                    <div class="section-label">Example</div>
+                    <div class="code-block">&lt;iframe src="https://youtube.com/..." width="560"
+                        height="315"&gt;&lt;/iframe&gt;</div>
+                    <div class="use-case">
+                        <strong>Use Case:</strong> Embeds another HTML document (like a YouTube video, Google Map, or
+                        external site) within the current page.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ATTRIBUTES SECTION -->
+        <section id="attributes">
+            <h2>Common Attributes</h2>
+            <div class="grid">
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="keyword attribute-name">id</span>
+                        <span class="tag-name">Unique Identifier</span>
+                    </div>
+                    <div class="section-label">Syntax</div>
+                    <div class="code-block">&lt;tag id="unique-name"&gt;</div>
+                    <div class="section-label">Example</div>
+                    <div class="code-block">&lt;h1 id="main-heading"&gt;Welcome&lt;/h1&gt;</div>
+                    <div class="use-case">
+                        <strong>Use Case:</strong> Provides a unique name for an element. Used to style that specific
+                        element with CSS or manipulate it with JavaScript. Must be unique per page.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="keyword attribute-name">class</span>
+                        <span class="tag-name">Class Identifier</span>
+                    </div>
+                    <div class="section-label">Syntax</div>
+                    <div class="code-block">&lt;tag class="class-name"&gt;</div>
+                    <div class="section-label">Example</div>
+                    <div class="code-block">&lt;p class="highlight text-bold"&gt;Text&lt;/p&gt;</div>
+                    <div class="use-case">
+                        <strong>Use Case:</strong> Assigns one or more class names to an element. Used by CSS and JS to
+                        target multiple elements that share the same styling or behavior.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="keyword attribute-name">src</span>
+                        <span class="tag-name">Source</span>
+                    </div>
+                    <div class="section-label">Syntax</div>
+                    <div class="code-block">&lt;tag src="path/to/file"&gt;</div>
+                    <div class="section-label">Example</div>
+                    <div class="code-block">&lt;img src="cat.jpg"&gt;<br>&lt;script src="app.js"&gt;&lt;/script&gt;
+                    </div>
+                    <div class="use-case">
+                        <strong>Use Case:</strong> Specifies the path/URL to an external resource, typically used with
+                        &lt;img&gt;, &lt;script&gt;, &lt;iframe&gt;, and &lt;audio&gt;/&lt;video&gt;.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="keyword attribute-name">href</span>
+                        <span class="tag-name">Hypertext Reference</span>
+                    </div>
+                    <div class="section-label">Syntax</div>
+                    <div class="code-block">&lt;a href="url"&gt;</div>
+                    <div class="section-label">Example</div>
+                    <div class="code-block">&lt;a href="/about.html"&gt;About Us&lt;/a&gt;<br>&lt;link href="style.css"
+                        rel="stylesheet"&gt;</div>
+                    <div class="use-case">
+                        <strong>Use Case:</strong> Specifies the URL of the page the link goes to (used on &lt;a&gt;) or
+                        the location of an external resource (used on &lt;link&gt;).
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="keyword attribute-name">alt</span>
+                        <span class="tag-name">Alternative Text</span>
+                    </div>
+                    <div class="section-label">Syntax</div>
+                    <div class="code-block">&lt;img alt="description"&gt;</div>
+                    <div class="section-label">Example</div>
+                    <div class="code-block">&lt;img src="dog.jpg" alt="A brown dog running"&gt;</div>
+                    <div class="use-case">
+                        <strong>Use Case:</strong> Provides fallback text if an image fails to load. Crucial for
+                        accessibility (screen readers) and SEO.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="keyword attribute-name">type</span>
+                        <span class="tag-name">Input Type</span>
+                    </div>
+                    <div class="section-label">Syntax</div>
+                    <div class="code-block">&lt;input type="type"&gt;</div>
+                    <div class="section-label">Example</div>
+                    <div class="code-block">&lt;input type="password"&gt;<br>&lt;button type="submit"&gt;</div>
+                    <div class="use-case">
+                        <strong>Use Case:</strong> Defines the specific kind of input field (e.g., text, email, number)
+                        or button behavior.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="keyword attribute-name">value &amp; placeholder</span>
+                        <span class="tag-name">Input Data</span>
+                    </div>
+                    <div class="section-label">Syntax</div>
+                    <div class="code-block">&lt;input value="val" placeholder="hint"&gt;</div>
+                    <div class="section-label">Example</div>
+                    <div class="code-block">&lt;input placeholder="Search..."&gt;</div>
+                    <div class="use-case">
+                        <strong>Use Case:</strong> `value` sets the default/current text of an input. `placeholder`
+                        shows a temporary hint before typing starts.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="keyword attribute-name">required &amp; disabled</span>
+                        <span class="tag-name">Boolean States</span>
+                    </div>
+                    <div class="section-label">Syntax</div>
+                    <div class="code-block">&lt;input required disabled&gt;</div>
+                    <div class="section-label">Example</div>
+                    <div class="code-block">&lt;button disabled&gt;Processing&lt;/button&gt;</div>
+                    <div class="use-case">
+                        <strong>Use Case:</strong> `required` forces the user to fill a field before submitting.
+                        `disabled` prevents interaction.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="keyword attribute-name">style</span>
+                        <span class="tag-name">Inline CSS</span>
+                    </div>
+                    <div class="section-label">Syntax</div>
+                    <div class="code-block">&lt;tag style="property: value;"&gt;</div>
+                    <div class="section-label">Example</div>
+                    <div class="code-block">&lt;p style="color: red; margin-top: 10px;"&gt;</div>
+                    <div class="use-case">
+                        <strong>Use Case:</strong> Applies CSS directly to a single element. (Use sparingly; prefer
+                        external classes).
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="keyword attribute-name">target</span>
+                        <span class="tag-name">Link Target</span>
+                    </div>
+                    <div class="section-label">Syntax</div>
+                    <div class="code-block">&lt;a target="_blank"&gt;</div>
+                    <div class="section-label">Example</div>
+                    <div class="code-block">&lt;a href="..." target="_blank"&gt;Open in new tab&lt;/a&gt;</div>
+                    <div class="use-case">
+                        <strong>Use Case:</strong> Tells the browser where to open the linked document. `_blank` opens
+                        it in a new tab/window.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ENTITIES SECTION -->
+        <section id="entities">
+            <h2>Common Entities</h2>
+            <p style="margin-bottom: 1rem; color: var(--text-muted);">Entities are used to display reserved characters
+                (like &lt; and &gt;) or invisible characters.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Entity Name</th>
+                        <th>Syntax</th>
+                        <th>Result / Example</th>
+                        <th>Use Case</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="keyword entity-name">&amp;lt;</span></td>
+                        <td><code>&amp;lt;</code></td>
+                        <td>&lt; (Less than)</td>
+                        <td>Used to display a <code>&lt;</code> symbol without the browser thinking it's the start of an
+                            HTML tag.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="keyword entity-name">&amp;gt;</span></td>
+                        <td><code>&amp;gt;</code></td>
+                        <td>&gt; (Greater than)</td>
+                        <td>Used to display a <code>&gt;</code> symbol without the browser thinking it's the end of an
+                            HTML tag.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="keyword entity-name">&amp;amp;</span></td>
+                        <td><code>&amp;amp;</code></td>
+                        <td>&amp; (Ampersand)</td>
+                        <td>Used to safely display an ampersand in text or URLs.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="keyword entity-name">&amp;copy;</span></td>
+                        <td><code>&amp;copy;</code></td>
+                        <td>&copy; (Copyright)</td>
+                        <td>Displays the copyright symbol, usually found in the footer of a webpage.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="keyword entity-name">&amp;nbsp;</span></td>
+                        <td><code>&amp;nbsp;</code></td>
+                        <td>(Non-breaking space)</td>
+                        <td>Creates a space that prevents a line break at its position. Useful for spacing or keeping
+                            two words together.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="keyword entity-name">&amp;euro; / &amp;pound; / &amp;yen;</span></td>
+                        <td><code>&amp;euro;</code></td>
+                        <td>&euro; / &pound; / &yen;</td>
+                        <td>Currency symbols for Euro, Pound, and Yen.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="keyword entity-name">&amp;rarr; / &amp;larr;</span></td>
+                        <td><code>&amp;rarr;</code></td>
+                        <td>&rarr; (Right Arrow) / &larr;</td>
+                        <td>Directional arrows useful for navigation links or indicators.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="keyword entity-name">&amp;trade; / &amp;reg;</span></td>
+                        <td><code>&amp;trade;</code> / <code>&amp;reg;</code></td>
+                        <td>&trade; (Trademark) / &reg;</td>
+                        <td>Legal and brand symbols for trademark and registered trademark.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="keyword entity-name">&amp;quot; / &amp;apos;</span></td>
+                        <td><code>&amp;quot;</code> / <code>&amp;apos;</code></td>
+                        <td>&quot; (Quote) / &apos; (Apostrophe)</td>
+                        <td>Double and single quotation marks (useful if you're inside an attribute value).</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- CONCEPTS SECTION -->
+        <section id="concepts">
+            <h2>Common Required Words / Concepts</h2>
+
+            <div class="term-card">
+                <div class="term-title">DOM (Document Object Model)</div>
+                <p>An programming interface for web documents. It represents the page so that programs can change the
+                    document structure, style, and content. The DOM represents the document as nodes and objects; that
+                    way, programming languages (like JavaScript) can interact with the page.</p>
+            </div>
+
+            <div class="term-card">
+                <div class="term-title">Element</div>
+                <p>An individual component of an HTML document. An element usually consists of a start tag, content, and
+                    an end tag (e.g., <code>&lt;p&gt;This is an element&lt;/p&gt;</code>). Sometimes elements are empty
+                    and self-closing (e.g., <code>&lt;img&gt;</code>).</p>
+            </div>
+
+            <div class="term-card">
+                <div class="term-title">Tag</div>
+                <p>The markup that denotes the start and end of an element. Tags are enclosed in angle brackets. For
+                    example, <code>&lt;h1&gt;</code> is the opening tag and <code>&lt;/h1&gt;</code> is the closing tag.
+                </p>
+            </div>
+
+            <div class="term-card">
+                <div class="term-title">Semantic HTML</div>
+                <p>Using HTML markup to reinforce the semantics, or meaning, of the information in webpages rather than
+                    merely to define its presentation (look). Examples include using <code>&lt;article&gt;</code>,
+                    <code>&lt;nav&gt;</code>, and <code>&lt;footer&gt;</code> instead of generic
+                    <code>&lt;div&gt;</code> tags. It aids accessibility and SEO.
+                </p>
+            </div>
+
+            <div class="term-card">
+                <div class="term-title">Block-level vs. Inline Elements</div>
+                <p><strong>Block-level elements</strong> (like <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>,
+                    <code>&lt;h1&gt;</code>) always start on a new line and take up the full width available.
+                    <strong>Inline elements</strong> (like <code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>,
+                    <code>&lt;strong&gt;</code>) do not start on a new line and only take up as much width as necessary.
+                </p>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+
+</html>
