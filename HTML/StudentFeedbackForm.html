@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Feedback Form</title>
+</head>
+<body>
+    <header>
+        <h1>Student Feedback Form</h1>
+        <p>
+            Thanks for your great co-operation. Please provide feedback for your 1st semester Journey
+        </p>
+    </header>
+    <main>
+        <form method="POST" action="">
+            <fieldset>
+                <legend>Personal Information</legend>
+
+                <label for="full-name">Name</label>
+                <input type="text" id="full-name" name="name" placeholder="e.g., John rai" required size="20">
+                
+                <label for="email">Email Address</label>
+                <input 
+                type="email"
+                required
+                id="email"
+                name="email"
+                placeholder="example@email.com"
+                size="30"
+                >
+
+                <label for="id-no" >ID No.</label>
+                <input
+                type="number"
+                required
+                id="id-no"
+                name="ID_NO"
+                placeholder="eg,12"
+                size="2"
+                min="1"
+                max="50"
+                >
+            </fieldset>
+            <fieldset>
+                <legend>How did you know about this college?</legend>
+
+                <input 
+                type="checkbox"
+                id="ads" 
+                name="choice" 
+                value="ads">
+                <label for="media">Social Media</label>
+
+                <input
+                type="checkbox"
+                id="media"
+                name="choice"
+                value="social_media"
+                >
+                <label for="recommendation">Friends / Family / Alumni</label>
+                
+                <input
+                type="checkbox"
+                id="location"
+                name="choice"
+                value="location"
+                >
+                <label for="location">Location</label>
+
+                <input
+                type="checkbox"
+                id="ads"
+                name="choice"
+                value="ads"
+                >
+                <label for="ads">Advertisement</label>
+
+                <input
+                type="checkbox"
+                id="other"
+                name="choice"
+                value="others"
+                >
+                <label for="other">Others:</label>
+                <input
+                type="text"
+                name="choice"
+                placeholder="Please Specify"
+                >
+            </fieldset>
+            <fieldset>
+                <legend>Ratings</legend>
+
+                <label for="clarity">How well did the course structure and explanations help you understand complex concepts?</label>
+                <select name="clarity" id="clarity">
+                    <option value="poor">Poor</option>
+                    <option value="satisfactory">Satisfactory</option>
+                    <option selected value="good">Good</option>
+                    <option value="very-good">Very Good</option>
+                    <option value="excellent">Excellent</option>
+                </select>
+                
+                <label for="Assessment">Did the assignments and exams accurately reflect the material covered in class?</label>
+                <select name="Assessment" id="Assessment">
+                    <option value="poor">Poor</option>
+                    <option value="satisfactory">Satisfactory</option>
+                    <option selected value="good">Good</option>
+                    <option value="very-good">Very Good</option>
+                    <option value="excellent">Excellent</option>
+                </select>
+
+                <label for="Engagement">How comfortable did you feel asking questions or expressing your ideas in this class?</label>
+                <select name="Engagement" id="Engagement">
+                    <option value="poor">Poor</option>
+                    <option value="satisfactory">Satisfactory</option>
+                    <option selected value="good">Good</option>
+                    <option value="very-good">Very Good</option>
+                    <option value="excellent">Excellent</option>
+                </select>
+
+                <label for="change">If you could change one thing about how this course was structured or taught, what would it be?</label>
+                <textarea cols="30" rows="1" name="comments" id="change"></textarea>
+                <--- Work Pending  -->
+            </fieldset>
+        </form>
+    </main>
+</body>
+</html>
