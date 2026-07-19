@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Survey Form</title>
+  </head>
+
+  <body>
+    <h1 id="title">Survey Form</h1>
+    <p id="description">Thank you for taking the time to help us improve the platform</p>
+    <form id="survey-form">
+      <div>
+        <label for="name" id="name-label">Name: </label>
+        <input type="text" id="name" placeholder="Enter your name:" class="name" required>
+      </div>
+      <div>
+        <label for="email" id="email-label">Email: </label>
+        <input type="email" id="email" placeholder="Enter your email address:" required class="email">
+      </div> 
+      <div>
+        <label for="age" id="number-label">Age(optional): </label>
+        <input type="number" id="number" placeholder="age" class="age" min="10" max="100">
+      </div>
+      <div>
+        <p>Which option best describes your current role?</p>
+        <select id="dropdown" placeholder="Select Current Role">
+          <option>Student</option>
+          <option>Full Time Job</option>
+          <option>Full Time Learner</option>
+          <option>Prefer Not to Say</option>
+          <option>Others</option>
+        </select>
+      </div>
+      <div>
+        <p>Would you recommend this website to a friend?</p>
+        <input type="radio" id="Definitely" name="recommendation" value="Definitely">
+        <label for="Definitely">Definitely</label>
+        <input type="radio" id="MayBe" name="recommendation" value="May-be">
+        <label for="MayBe">May Be </label>
+        <input type="radio" id="NotSure" name="recommendation" value="Not-Sure">
+        <label for="NotSure">Not Sure</label>
+      </div>
+      <div>
+        <p>What would you like to see improved? (Check all that apply)</p>
+        <input type="checkbox" id="Front-End" name="impovement-area" value="Front-end Projects">
+        <label for="Front-End">Front-End Projects</label>
+        <input type="checkbox" id="Back-End" name="impovement-area" value="Back-end Projects">
+        <label for="Back-End">Back-End Projects</label>
+        <input type="checkbox" id="Data-vis" name="impovement-area" value="Data Visualization">
+        <label for="Data-vis">Data Visualization</label>
+        <input type="checkbox" id="Challenges" name="impovement-area" value="Challenges">
+        <label for="Challenges">Challenges</label>
+      </div>
+      <div>
+        <p>Any comments or suggestions?</p>
+        <textarea placeholder="Enter your comments here..." id="comments" name="comments"></textarea>
+      </div>
+      <button type="submit" id="submit" class="submit-button">Submit</button>
+    </form>
+  </body>
+</html>
