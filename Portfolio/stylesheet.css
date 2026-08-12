@@ -1,23 +1,24 @@
 p{
   font-family: sans-serif;
-  color:rgb(6, 159, 154);
+  color:rgb(114, 142, 186);
 }
+
 body{
   background-image: url("./assets/sl_031420_28950_10.jpg");
   padding: 20px;
-  
-
+  background-position: center;
+  background-size: cover;
 }
+
 h1{
   font-size: 30px;
   color:rgb(2, 57, 70);
 }
+
 .page-nav{
   margin: 10px;
 }
-.page-nav:hover{
-  color:aqua;
-}
+
 h2{
   color:rgb(3, 230, 154);
-}
+} 
